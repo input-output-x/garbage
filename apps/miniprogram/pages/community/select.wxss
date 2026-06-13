@@ -1,0 +1,45 @@
+.page {
+  padding: 24rpx 0;
+}
+
+.search-tip {
+  padding: 0 32rpx 20rpx;
+  font-size: 26rpx;
+  color: #999;
+}
+
+.community-item {
+  display: flex;
+  align-items: center;
+  margin: 0 24rpx 16rpx;
+  padding: 28rpx 32rpx;
+  background: #fff;
+  border-radius: 20rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.03);
+}
+
+.community-name {
+  display: block;
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #1A1A1A;
+}
+
+.community-addr {
+  display: block;
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.community-arrow {
+  color: #ccc;
+  font-size: 32rpx;
+  margin-left: 16rpx;
+}
+
+.empty, .loading {
+  text-align: center;
+  padding: 80rpx;
+  color: #999;
+}

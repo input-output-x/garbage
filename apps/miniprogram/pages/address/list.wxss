@@ -1,0 +1,19 @@
+.page { padding: 24rpx 24rpx 140rpx; }
+.addr-card {
+  background: #fff; border-radius: 16rpx; padding: 24rpx;
+  margin-bottom: 16rpx; box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.04);
+}
+.addr-top { display: flex; align-items: center; gap: 16rpx; }
+.addr-name { font-size: 30rpx; font-weight: 600; }
+.addr-phone { font-size: 26rpx; color: #666; }
+.addr-default {
+  padding: 2rpx 12rpx; background: #FFF5EB; color: #FF8A00;
+  font-size: 20rpx; border-radius: 8rpx;
+}
+.addr-detail { display: block; margin-top: 12rpx; font-size: 26rpx; color: #666; }
+.addr-actions {
+  margin-top: 16rpx; padding-top: 16rpx; border-top: 1rpx solid #F5F5F5;
+  display: flex; gap: 32rpx; font-size: 26rpx; color: #FF8A00;
+}
+.empty { text-align: center; padding: 80rpx; color: #999; }
+.add-btn { position: fixed; bottom: 40rpx; left: 48rpx; right: 48rpx; }

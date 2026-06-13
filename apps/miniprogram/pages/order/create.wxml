@@ -1,0 +1,57 @@
+<view class="page">
+  <view class="card">
+    <view class="card-head">
+      <text class="type-tag">{{typeName}}</text>
+      <text class="price-tag" wx:if="{{!usePackage}}">¥{{unitPrice}}/{{unitLabel}}</text>
+      <text class="price-tag" wx:else>套餐抵扣</text>
+    </view>
+    <view class="qty-row">
+      <text class="qty-label">数量</text>
+      <view class="qty-ctrl">
+        <view class="qty-btn" bindtap="decQty">−</view>
+        <text class="qty-num">{{quantity}}</text>
+        <view class="qty-btn" bindtap="incQty">+</view>
+      </view>
+    </view>
+    <view class="pkg-row" wx:if="{{activePackage}}">
+      <text>使用套餐（剩余{{activePackage.remainingTimes}}次）</text>
+      <switch checked="{{usePackage}}" bindchange="togglePackage" color="#FF8A00" />
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">
+      <text>上门地址</text>
+      <text class="link" bindtap="goAddAddress">+ 新增</text>
+    </view>
+    <view
+      class="addr-option {{selectedAddressId === item.id ? 'active' : ''}}"
+      wx:for="{{addresses}}"
+      wx:key="id"
+      data-id="{{item.id}}"
+      bindtap="selectAddress"
+    >
+      <text class="addr-text">{{item.communityName}} {{item.building}}{{item.room}} · {{item.contactName}}</text>
+    </view>
+    <view class="manual-link" bindtap="toggleManual" wx:if="{{!manualMode && addresses.length}}">手动填写地址</view>
+    <block wx:if="{{manualMode || !addresses.length}}">
+      <view class="input-row"><text class="input-label">楼栋</text><input data-field="building" bindinput="onInput" placeholder="如 3栋" /></view>
+      <view class="input-row"><text class="input-label">房号</text><input data-field="room" bindinput="onInput" placeholder="如 1201" /></view>
+      <view class="input-row"><text class="input-label">联系人</text><input data-field="contactName" bindinput="onInput" /></view>
+      <view class="input-row"><text class="input-label">手机</text><input data-field="contactPhone" bindinput="onInput" type="number" /></view>
+    </block>
+  </view>
+
+  <view class="card">
+    <view class="card-title">备注</view>
+    <textarea class="textarea" placeholder="如：放门口、勿按门铃" data-field="remark" bindinput="onInput" />
+  </view>
+</view>
+
+<view class="footer">
+  <view class="footer-price">
+    <text class="footer-label">合计</text>
+    <text class="footer-amount">{{usePackage ? '套餐抵扣' : '¥' + total}}</text>
+  </view>
+  <button class="btn-primary footer-btn" bindtap="submit">确认下单</button>
+</view>

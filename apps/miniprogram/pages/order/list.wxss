@@ -1,0 +1,50 @@
+.page { min-height: 100vh; padding: 0 0 32rpx; }
+
+.tabs {
+  display: flex; background: #fff; padding: 0 24rpx;
+  border-bottom: 1rpx solid #F0F0F0; position: sticky; top: 0; z-index: 10;
+}
+.tab {
+  flex: 1; text-align: center; padding: 24rpx 0;
+  font-size: 28rpx; color: #666; position: relative;
+}
+.tab.active { color: #FF8A00; font-weight: 600; }
+.tab.active::after {
+  content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 48rpx; height: 4rpx; background: #FF8A00; border-radius: 2rpx;
+}
+
+.order-card {
+  margin: 20rpx 24rpx 0;
+  padding: 28rpx 32rpx;
+  background: #fff;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.04);
+}
+
+.order-top { display: flex; justify-content: space-between; align-items: center; }
+.order-no { font-size: 26rpx; color: #999; }
+.order-status { font-size: 26rpx; font-weight: 500; color: #FF8A00; }
+
+.order-body { margin-top: 16rpx; display: flex; align-items: baseline; gap: 8rpx; }
+.order-type { font-size: 32rpx; font-weight: 600; color: #1A1A1A; }
+.order-qty { font-size: 26rpx; color: #999; }
+.order-pay {
+  margin-left: 8rpx; padding: 2rpx 10rpx; background: #FFF5EB;
+  color: #FF8A00; font-size: 20rpx; border-radius: 6rpx;
+}
+.order-addr { margin-top: 8rpx; font-size: 24rpx; color: #999; }
+
+.order-bottom {
+  margin-top: 16rpx; padding-top: 16rpx; border-top: 1rpx solid #F5F5F5;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.order-price { font-size: 34rpx; font-weight: 600; color: #FF8A00; }
+.order-time { font-size: 22rpx; color: #BBB; }
+
+.empty {
+  display: flex; flex-direction: column; align-items: center; padding-top: 200rpx;
+}
+.empty-icon { font-size: 120rpx; opacity: 0.3; }
+.empty-text { margin-top: 24rpx; font-size: 28rpx; color: #999; }
+.empty-btn { margin-top: 48rpx; width: 320rpx; }

@@ -1,0 +1,41 @@
+<view class="page" wx:if="{{order}}">
+  <view class="status-header status-{{order.status}}">
+    <text class="status-icon">{{statusIcon}}</text>
+    <text class="status-text">{{statusMap[order.status]}}</text>
+  </view>
+
+  <view class="card">
+    <view class="info-row"><text class="info-label">订单号</text><text class="info-value">{{order.orderNo}}</text></view>
+    <view class="info-row"><text class="info-label">服务类型</text><text class="info-value">{{typeMap[order.garbageType]}}</text></view>
+    <view class="info-row"><text class="info-label">数量</text><text class="info-value">{{order.quantity}}</text></view>
+    <view class="info-row" wx:if="{{order.addressText}}"><text class="info-label">地址</text><text class="info-value">{{order.addressText}}</text></view>
+    <view class="info-row"><text class="info-label">支付方式</text><text class="info-value">{{order.payMethod === 'package' ? '套餐抵扣' : '微信支付'}}</text></view>
+    <view class="info-row"><text class="info-label">下单时间</text><text class="info-value">{{order.createdAt.slice(0,16).replace('T',' ')}}</text></view>
+    <view class="info-row total-row">
+      <text class="info-label">实付金额</text>
+      <text class="info-price">{{order.totalAmount > 0 ? '¥' + order.totalAmount : '套餐抵扣'}}</text>
+    </view>
+  </view>
+
+  <view class="card" wx:if="{{order.rating}}">
+    <view class="card-title">我的评价</view>
+    <text class="review-stars">{{order.rating}} 星 · {{order.reviewContent}}</text>
+  </view>
+
+  <view class="card" wx:if="{{showReview}}">
+    <view class="card-title">评价服务</view>
+    <view class="stars">
+      <text
+        wx:for="{{[1,2,3,4,5]}}"
+        wx:key="*this"
+        class="star {{rating >= item ? 'on' : ''}}"
+        data-star="{{item}}"
+        bindtap="onRatingChange"
+      >★</text>
+    </view>
+    <textarea class="textarea" value="{{reviewText}}" bindinput="onReviewInput" placeholder="说说您的感受" />
+    <button class="btn-primary" bindtap="submitReview">提交评价</button>
+  </view>
+
+  <button class="btn-outline back-btn" bindtap="goOrders">查看全部订单</button>
+</view>

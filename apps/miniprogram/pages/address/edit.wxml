@@ -1,0 +1,19 @@
+<view class="page">
+  <view class="card">
+    <view class="row" bindtap="selectCommunity">
+      <text class="label">小区</text>
+      <text class="value">{{communityName || '请选择'}}</text>
+      <text class="arrow">›</text>
+    </view>
+    <view class="row"><text class="label">楼栋</text><input data-field="building" value="{{building}}" bindinput="onInput" placeholder="如 3栋" /></view>
+    <view class="row"><text class="label">单元</text><input data-field="unit" value="{{unit}}" bindinput="onInput" placeholder="选填" /></view>
+    <view class="row"><text class="label">房号</text><input data-field="room" value="{{room}}" bindinput="onInput" placeholder="如 1201" /></view>
+    <view class="row"><text class="label">联系人</text><input data-field="contactName" value="{{contactName}}" bindinput="onInput" /></view>
+    <view class="row"><text class="label">手机</text><input data-field="contactPhone" value="{{contactPhone}}" bindinput="onInput" type="number" /></view>
+    <view class="row switch-row">
+      <text class="label">设为默认</text>
+      <switch checked="{{isDefault}}" bindchange="onDefaultChange" color="#FF8A00" />
+    </view>
+  </view>
+  <button class="btn-primary save-btn" bindtap="save">保存</button>
+</view>

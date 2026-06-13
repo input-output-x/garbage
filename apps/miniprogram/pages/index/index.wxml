@@ -1,0 +1,107 @@
+<view class="page">
+  <view class="hero">
+    <view class="hero-inner">
+      <view class="brand">
+        <view class="brand-logo">丢</view>
+        <text class="brand-name">丢呗</text>
+      </view>
+      <view class="hero-slogan">全国覆盖 皆可上门</view>
+      <view class="hero-desc">一键下单，轻松搞定</view>
+    </view>
+    <view class="hero-illus">🚮</view>
+  </view>
+
+  <!-- 套餐状态 + 订阅消息 -->
+  <view class="notice-bar">
+    <text class="notice-icon">📢</text>
+    <text class="notice-text">{{packageTip}}</text>
+    <view class="notice-btn" bindtap="subscribeMsg">订阅消息</view>
+  </view>
+
+  <!-- 小区 -->
+  <view class="location-bar" bindtap="selectCommunity">
+    <text>📍</text>
+    <text class="location-text">{{community ? community.name : '请选择服务小区'}}</text>
+    <text class="arrow">›</text>
+  </view>
+
+  <!-- 套餐 / 单次 -->
+  <view class="service-row">
+    <view class="service-card" bindtap="goPackage">
+      <view class="service-info">
+        <text class="service-name">套餐服务</text>
+        <text class="service-desc">包月 / 包季 / 包年</text>
+        <view class="service-btn">购买 ›</view>
+      </view>
+      <text class="service-icon">🗑️</text>
+    </view>
+    <view class="service-card" bindtap="goSingle">
+      <view class="service-info">
+        <text class="service-name">单次服务</text>
+        <text class="service-desc">按次收费</text>
+        <view class="service-btn service-btn-alt">购买 ›</view>
+      </view>
+      <text class="service-icon">♻️</text>
+    </view>
+  </view>
+
+  <!-- 招募 -->
+  <view class="partner-bar" bindtap="goPartner">
+    <view>
+      <text class="partner-title">招募合作伙伴</text>
+      <text class="partner-desc">诚邀合作伙伴加盟，期待与您同行</text>
+    </view>
+    <text class="partner-icon">🤝</text>
+  </view>
+
+  <!-- 服务流程 -->
+  <view class="card flow-card">
+    <view class="flow-head">
+      <text class="flow-title">服务流程</text>
+      <text class="flow-link" bindtap="contactService">🎧 联系客服</text>
+    </view>
+    <view class="flow-steps">
+      <view class="flow-step" wx:for="{{steps}}" wx:key="label">
+        <view class="flow-icon-wrap"><text class="flow-icon">{{item.icon}}</text></view>
+        <text class="flow-label">{{item.label}}</text>
+        <text class="flow-arrow" wx:if="{{index < steps.length - 1}}">›</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 用户评价 -->
+  <view class="card review-card" wx:if="{{reviews.length}}">
+    <view class="flow-head">
+      <text class="flow-title">用户评价 ({{reviewTotal}}条)</text>
+    </view>
+    <view class="review-item" wx:for="{{reviews}}" wx:key="id">
+      <view class="review-top">
+        <view class="review-user">
+          <view class="review-avatar">{{item.nickname[0]}}</view>
+          <view>
+            <text class="review-name">{{item.nickname}}</text>
+            <text class="review-meta">{{item.createdAt.slice(0,10)}} {{item.orderType === 'package' ? '购买了' + (item.planName || '套餐') : '购买了单次卡'}}</text>
+          </view>
+        </view>
+        <view class="review-rating">⭐ {{item.content}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="tip-bar">垃圾请自行分类装袋，代扔员仅负责取袋与投放</view>
+</view>
+
+<view class="mask" wx:if="{{showTypePicker}}" bindtap="closeTypePicker">
+  <view class="picker-sheet" catchtap="">
+    <view class="picker-title">选择垃圾类型</view>
+    <view class="picker-item" wx:for="{{types}}" wx:key="code" data-type="{{item.code}}" bindtap="pickType">
+      <text class="picker-icon">{{item.icon}}</text>
+      <view class="picker-info">
+        <text class="picker-name">{{item.name}}</text>
+        <text class="picker-desc">{{item.desc}}</text>
+      </view>
+      <text class="picker-arrow">›</text>
+    </view>
+    <view class="picker-cancel" bindtap="closeTypePicker">取消</view>
+  </view>
+</view>

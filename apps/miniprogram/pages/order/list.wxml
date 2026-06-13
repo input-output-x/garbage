@@ -1,0 +1,36 @@
+<view class="page">
+  <view class="tabs">
+    <view
+      class="tab {{tab === item.key ? 'active' : ''}}"
+      wx:for="{{tabs}}"
+      wx:key="key"
+      data-tab="{{item.key}}"
+      bindtap="switchTab"
+    >{{item.label}}</view>
+  </view>
+
+  <view wx:if="{{orders.length}}">
+    <view class="order-card" wx:for="{{orders}}" wx:key="id" data-id="{{item.id}}" bindtap="goDetail">
+      <view class="order-top">
+        <text class="order-no">{{item.orderNo}}</text>
+        <text class="order-status">{{statusMap[item.status]}}</text>
+      </view>
+      <view class="order-body">
+        <text class="order-type">{{typeMap[item.garbageType]}}</text>
+        <text class="order-qty">× {{item.quantity}}</text>
+        <text class="order-pay" wx:if="{{item.payMethod === 'package'}}">套餐</text>
+      </view>
+      <view class="order-addr" wx:if="{{item.addressText}}">{{item.addressText}}</view>
+      <view class="order-bottom">
+        <text class="order-price">{{item.totalAmount > 0 ? '¥' + item.totalAmount : '套餐抵扣'}}</text>
+        <text class="order-time">{{item.createdAt.slice(0,16).replace('T',' ')}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty" wx:else>
+    <view class="empty-icon">📦</view>
+    <text class="empty-text">暂无订单</text>
+    <button class="btn-primary empty-btn" bindtap="goOrder">去下单</button>
+  </view>
+</view>

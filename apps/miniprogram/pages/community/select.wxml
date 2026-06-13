@@ -1,0 +1,18 @@
+<view class="page">
+  <view class="search-tip">选择您所在的小区</view>
+  <view
+    class="community-item"
+    wx:for="{{list}}"
+    wx:key="id"
+    data-item="{{item}}"
+    bindtap="select"
+  >
+    <view class="community-main">
+      <text class="community-name">{{item.name}}</text>
+      <text class="community-addr">{{item.address}}</text>
+    </view>
+    <text class="community-arrow">›</text>
+  </view>
+  <view class="empty" wx:if="{{!loading && !list.length}}">暂无开通服务的小区</view>
+  <view class="loading" wx:if="{{loading}}">加载中...</view>
+</view>

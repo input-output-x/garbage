@@ -1,0 +1,21 @@
+.page { padding: 24rpx; }
+.header-tip { font-size: 26rpx; color: #999; margin-bottom: 24rpx; text-align: center; }
+.plan-card {
+  background: #fff; border-radius: 24rpx; padding: 32rpx;
+  margin-bottom: 20rpx; box-shadow: 0 4rpx 20rpx rgba(255,138,0,0.1);
+  border: 2rpx solid #FFE4B5;
+}
+.plan-top { display: flex; justify-content: space-between; align-items: center; }
+.plan-name { font-size: 36rpx; font-weight: 700; }
+.plan-tag {
+  margin-left: 12rpx; padding: 4rpx 12rpx; background: #FF8A00;
+  color: #fff; font-size: 20rpx; border-radius: 8rpx;
+}
+.plan-price { font-size: 40rpx; font-weight: 700; color: #FF8A00; }
+.plan-desc { display: block; margin-top: 12rpx; font-size: 26rpx; color: #666; }
+.plan-btn {
+  margin-top: 24rpx; text-align: center; padding: 20rpx;
+  background: linear-gradient(135deg, #FFB347, #FF8A00);
+  color: #fff; border-radius: 48rpx; font-size: 30rpx;
+}
+.loading { text-align: center; padding: 40rpx; color: #999; }

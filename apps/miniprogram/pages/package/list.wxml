@@ -1,0 +1,15 @@
+<view class="page">
+  <view class="header-tip">选择适合您的套餐，下单更划算</view>
+  <view class="plan-card" wx:for="{{plans}}" wx:key="id" data-plan="{{item}}" bindtap="buy">
+    <view class="plan-top">
+      <view>
+        <text class="plan-name">{{item.name}}</text>
+        <text class="plan-tag" wx:if="{{item.tag}}">{{item.tag}}</text>
+      </view>
+      <text class="plan-price">¥{{item.price}}</text>
+    </view>
+    <text class="plan-desc">{{item.description}}</text>
+    <view class="plan-btn">立即购买</view>
+  </view>
+  <view class="loading" wx:if="{{loading}}">加载中...</view>
+</view>

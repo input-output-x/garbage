@@ -1,0 +1,18 @@
+{
+  "name": "garbage-saas",
+  "private": true,
+  "version": "0.1.0",
+  "description": "代扔垃圾微信小程序 SaaS 平台",
+  "scripts": {
+    "dev:api": "pnpm --filter @garbage/api dev",
+    "dev:saas": "pnpm --filter @garbage/saas-web dev",
+    "dev:admin": "pnpm --filter @garbage/admin-web dev",
+    "dev:all": "pnpm --parallel dev:api dev:saas dev:admin",
+    "build": "pnpm -r build",
+    "deploy": "./scripts/deploy.sh",
+    "deploy:down": "docker compose down"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
